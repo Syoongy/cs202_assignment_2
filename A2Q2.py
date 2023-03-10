@@ -8,10 +8,14 @@ def convert_to_int_arr(hex_string_list):
     return ret_list
 
 
-# Total time complexity is O(m * n).
-# We iterate over every value of a which takes O(m) time
-# We then use an inner loop to iterate through all elements of b
-# which takes O(n) time
+'''
+Total time complexity is O(m * n).
+We iterate over every value of a which takes O(m) time
+We then use an inner loop to iterate through all elements of b
+which takes O(n) time
+'''
+
+
 def LCIS(a, b):
     a_list = convert_to_int_arr(a)
     b_list = convert_to_int_arr(b)
@@ -40,14 +44,13 @@ def LCIS(a, b):
                 if (current + 1 > table[b_idx]):
                     table[b_idx] = current + 1
 
-            # Now seek for previous smaller common
-            # element for current element of arr1
+            # Look for previous smaller common element for 
+            # current element of a_list
             if (a_val > b_val):
                 if (table[b_idx] > current):
                     current = table[b_idx]
 
-    # The maximum value in table[]
-    # is out result
+    # Find the longest result
     result = 0
     for b_idx in range(b_length):
         if (table[b_idx] > result):
